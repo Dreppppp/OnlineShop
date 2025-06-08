@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@import 'aos/dist/aos.css';
+
+@theme {
+  --animate-smooth-disappear: smoothDisappear 1s ease-in-out 1 forwards;
+  @keyframes smoothDisappear {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+  }
+}
