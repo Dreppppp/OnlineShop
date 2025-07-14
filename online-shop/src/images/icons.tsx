@@ -146,7 +146,7 @@ export const ProfileMenuBlack = () => {
 export const MenuArrowDownBlack = () => {
     return(
       <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.59961 1L4.59961 5L8.59961 1" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0.59961 1L4.59961 5L8.59961 1" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 
     )
@@ -161,23 +161,56 @@ export const BagpackMenuBlack = () => {
     )
 }
 
-// export const Icon = () => {
-//     return(
+export const FavoriteIcon = () => {
+    return(
+      <svg width="26" height="23" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.42634 11.6588L13.3672 21.5996L23.308 11.6588C25.8036 9.16325 25.8036 5.11719 23.308 2.62165C20.8125 0.126116 16.7664 0.126116 14.2709 2.62165L13.3672 3.52537L12.4635 2.62165C9.96794 0.126116 5.92188 0.126116 3.42634 2.62165C0.930804 5.11719 0.930803 9.16325 3.42634 11.6588Z" stroke="#AEAEAE" stroke-width="1.3125" stroke-linejoin="round"/>
+</svg>
+    )
+}
 
-//     )
-// }
+export const StarIcon = () => {
+    return(
+      <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.95196 0.459426C7.69342 0.0138512 7.04996 0.0138494 6.79141 0.459426L4.97057 3.5974C4.84285 3.81751 4.62209 3.96772 4.37046 4.00572L0.958086 4.52112C0.384953 4.60769 0.183913 5.33132 0.630262 5.70111L3.17234 7.8072C3.40765 8.00215 3.51829 8.30967 3.46113 8.60985L2.79616 12.1019C2.69105 12.654 3.27056 13.0829 3.76779 12.8211L6.98097 11.1292C7.22553 11.0004 7.51784 11.0004 7.7624 11.1292L10.9756 12.8211C11.4728 13.0829 12.0523 12.654 11.9472 12.1019L11.2822 8.60985C11.2251 8.30967 11.3357 8.00215 11.571 7.8072L14.1131 5.70111C14.5595 5.33132 14.3584 4.60769 13.7853 4.52112L10.3729 4.00572C10.1213 3.96772 9.90053 3.81751 9.77281 3.5974L7.95196 0.459426Z" fill="#A6A6A6"/>
+</svg>
+    )
+}
 
-// export const Icon = () => {
-//     return(
-
-//     )
-// }
-
-// export const Icon = () => {
-//     return(
-
-//     )
-// }
+// export const BedroomDurnituresIcon = () => {
+//   return (
+//     <svg
+//       width="1024"
+//       height="1536"
+//       viewBox="0 0 1024 1536"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//       xmlnsXlink="http://www.w3.org/1999/xlink"
+//     >
+//       <rect width="1024" height="1536" fill="url(#pattern0_1_7)" />
+//       <defs>
+//         <pattern
+//           id="pattern0_1_7"
+//           patternContentUnits="objectBoundingBox"
+//           width="1"
+//           height="1"
+//         >
+//           <use
+//             xlinkHref="#image0_1_7"
+//             transform="scale(0.000976562 0.000651042)"
+//           />
+//         </pattern>
+//         <image
+//           id="image0_1_7"
+//           width="1024"
+//           height="1536"
+//           preserveAspectRatio="none"
+//           xlinkHref="data:image/png;base64,..." // здесь нужно вставить base64-данные
+//         />
+//       </defs>
+//     </svg>
+//   );
+// };
 
 // export const Icon = () => {
 //     return(

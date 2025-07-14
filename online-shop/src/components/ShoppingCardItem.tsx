@@ -3,13 +3,15 @@ import { useShopingCatdStore } from '@/store/shoppingCardStore';
 import { FC } from 'react';
 
 const ShoppingCardItem: FC<Product> = ({ title, price, id, count }) => {
-  const { onIncreaseItemCount, onReduceItemCount } = useShopingCatdStore();
-
+  const { onIncreaseItemCount, onReduceItemCount, removeFromCard } = useShopingCatdStore();
+  const onRemoveFromCard = (id: number) => {
+    removeFromCard(id)
+  }
   return (
         <div className="h-[113px] flex px-[30px] items-center border border-b-1 border-[#DEDFE1]">
-          <div className="flex justify-between w-[693px] h-[53px]">
+          <div className="flex justify-between w-[653px] h-[53px]">
             <div className="flex justify-between items-center">
-              <span className="text-[25px] mr-[20px]">x</span>
+              <span className="text-[25px] mr-[20px]" onClick={() => {onRemoveFromCard(id)}}>x</span>
               <div className="size-[53px] bg-[#D9D9D9] mr-[20px]"></div>
               <p className="text-[16px] text-[#3D3D3D]">{title}</p>
             </div>
@@ -20,7 +22,7 @@ const ShoppingCardItem: FC<Product> = ({ title, price, id, count }) => {
                 <p className="text-[18px]">{count}</p>
                 <p className="color-[#414141] text-[25px]" onClick={() => {onIncreaseItemCount(id)}}>+</p>
               </div>
-              <p className="text-[16px] color-[#949494] ml-[40px] pr-[20px]">${price}</p>
+              <p className="text-[16px] color-[#949494] ml-[60px] pr-[20px]">${price}</p>
             </div>
           </div>
         </div>

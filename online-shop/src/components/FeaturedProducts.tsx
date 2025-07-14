@@ -1,43 +1,44 @@
 import { useShopingCatdStore } from '@/store/shoppingCardStore';
 import ProductList, { Product } from './Product';
-export default function FeaturedProducts() {
-  const featuredProducts: Product[] = [
-    {
-      id: 1,
-      title: 'Кружка',
-      price: 15,
-      image: null,
-        count:1,
-    },
-    {
-      id: 2,
-      title: 'Футболка',
-      price: 25,
-      image: null,
-        count:1,
-    },
-    {
-      id: 3,
-      title: 'Штаны',
-      price: 30,
-      image: null,
-        count:1,
-    },
-    {
-      id: 4,
-      title: 'Шорты',
-      price: 20,
-      image: null,
-        count:1,
-    },
-  ];
-  const { addToCard, removeFromCard } = useShopingCatdStore();
-  const onSelectProduct = (product: Product) => {
+import { ICardProduct, IProduct } from '@/utils/interfaces';
+export default function FeaturedProducts({data}:{data:unknown[]}) {
+  // const featuredProducts: Product[] = [
+  //   {
+  //     id: 1,
+  //     title: 'Кружка',
+  //     price: 15,
+  //     image: null,
+  //       count:1,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'Футболка',
+  //     price: 25,
+  //     image: null,
+  //       count:1,
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'Штаны',
+  //     price: 30,
+  //     image: null,
+  //       count:1,
+  //   },
+  //   {
+  //     id: 4,
+  //     title: 'Шорты',
+  //     price: 20,
+  //     image: null,
+  //       count:1,
+  //   },
+  // ];
+  const { addToCard, onReduceItemCount } = useShopingCatdStore();
+  const onSelectProduct = (product: ICardProduct) => {
     addToCard(product);
   };
 
   const onRemoveProduct = (id: number) => {
-    removeFromCard(id);
+    onReduceItemCount(id);
   };
   return (
     <div>
@@ -54,7 +55,7 @@ export default function FeaturedProducts() {
         </p>
       </div>
       <ProductList
-        products={featuredProducts}
+        products={data as ICardProduct[]}
         setChooseProducts={onSelectProduct}
         onRemoveProduct={onRemoveProduct}
       />

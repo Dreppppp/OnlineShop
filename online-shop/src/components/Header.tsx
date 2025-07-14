@@ -60,7 +60,7 @@ export default function Header() {
   }
   // let a:Dog = {name}
   return (
-    <div className="w-full h-[780px] px-[108px] bg-[#000000] opacity-[60%] pt-[40px] ">
+    <div className="w-full h-[780px] px-[108px]  bg-[#000000] opacity-[60%] pt-[40px]"  >
       <Menu  textColor="white"/>
       <div className="w-[800px] h-[300px] text-center mx-auto mt-[160px]">
         <h1 data-aos="fade-up-right" className="text-[45px] text-white" data-aos-delay={850}>
@@ -79,7 +79,7 @@ export default function Header() {
           data-aos-delay={1150}
           data-aos="fade-up-right"
           type="search"
-          className="text-white w-[344] h-[56] rounded-[20px] border border-1 border-white bg-[#00000026]"
+          className="text-white w-[344] h-[56] rounded-[20px] border border-1 border-white bg-[#oC7075]"
         />
       </div>
     </div>

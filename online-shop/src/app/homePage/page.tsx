@@ -1,7 +1,6 @@
 'use client';
 
 import { useShopingCatdStore } from '@/store/shoppingCardStore';
-import { Product } from '@/components/Product';
 import Header from '@/components/Header';
 import FeaturedProducts from '@/components/FeaturedProducts';
 import Range from '@/components/Range';
@@ -10,25 +9,25 @@ import Ongoings from '@/components/Ongoings';
 import Footer from '@/components/Footer';
 import ShoppingCardIcon from '@/components/ShoppingCardIcon';
 import useAnimaton from '@/hooks/useAnimaton';
+import useFetch, { RequestTypes } from '@/hooks/useFetch';
+import { IProduct } from '@/utils/interfaces';
 
 
 export default function mainPage() {
-  const { shopingCard, addToCard, removeFromCard } = useShopingCatdStore();
-
-  const onSelectProduct = (product: Product) => {
-    addToCard(product);
-  };
-
-  const onRemoveProduct = (id: number) => {
-    removeFromCard(id);
-  };
+  let {isLoading, error, data} = useFetch<IProduct[]>('https://fakestoreapi.com/products', RequestTypes.GET )
+  const { shopingCard} = useShopingCatdStore();
   const { isDisappearAnimationAdded } = useAnimaton(1000, shopingCard);
-  console.log('isDisappearAnimationAdded', isDisappearAnimationAdded);
-  return (
-
+  if (isLoading) return <div>Loadnig...</div>
+  if(error) return <div>Some went wrong...</div>
+  if (!data){ return (
     <div>
+      No data
+    </div>
+  )} else{
+    return(
+      <div>
       <Header />
-      <FeaturedProducts />
+      <FeaturedProducts data={data}/>
       <Range />
       <UniqueProportions />
       <Ongoings />
@@ -38,5 +37,6 @@ export default function mainPage() {
         disappearAnimation={isDisappearAnimationAdded ? 'animate-smooth-disappear' : ''}
       />
     </div>
-  );
+    )
+  }
 }
