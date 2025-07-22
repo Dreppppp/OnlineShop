@@ -12,8 +12,8 @@ export default function useFetch<T = unknown >(url: string, requestType: Request
   const [error, setError] = useState<string>("");
   const [data, setData] = useState<T | null>(null);
 
+
   useEffect(() => {
-    // const controller = new AbortController(); // позволяет отменять запрос
     const fetchData = async () => {
       setIsLoading(true);
       setError("");

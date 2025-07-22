@@ -2,7 +2,7 @@ import { Product } from '@/components/Product';
 import { useShopingCatdStore } from '@/store/shoppingCardStore';
 import { FC } from 'react';
 
-const ShoppingCardItem: FC<Product> = ({ title, price, id, count }) => {
+const ShoppingCardItem: FC<Product> = ({ title, price, id, count, images}) => {
   const { onIncreaseItemCount, onReduceItemCount, removeFromCard } = useShopingCatdStore();
   const onRemoveFromCard = (id: number) => {
     removeFromCard(id)
@@ -12,7 +12,9 @@ const ShoppingCardItem: FC<Product> = ({ title, price, id, count }) => {
           <div className="flex justify-between w-[653px] h-[53px]">
             <div className="flex justify-between items-center">
               <span className="text-[25px] mr-[20px]" onClick={() => {onRemoveFromCard(id)}}>x</span>
-              <div className="size-[53px] bg-[#D9D9D9] mr-[20px]"></div>
+              <div className="size-[53px] mr-[20px]">
+                <img src={images?.[0]}/>
+              </div>
               <p className="text-[16px] text-[#3D3D3D]">{title}</p>
             </div>
             <div className="flex justify-between items-center">

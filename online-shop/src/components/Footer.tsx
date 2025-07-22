@@ -14,7 +14,7 @@ export default function Footer() {
     );
   };
   return (
-    <div className="h-[962px] bg-[#3D3D3D] pt-[150px] mt-[170px]">
+    <div className="h-[962px] bg-black pt-[150px] mt-[170px]">
       <div className="">
         <div data-aos="fade-up" className="w-full flex justify-center">
           {' '}

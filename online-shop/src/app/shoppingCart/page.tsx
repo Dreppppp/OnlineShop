@@ -18,7 +18,7 @@ export default function shoppingCart({}) {
       <div className='w-screen flex justify-between px-[200px] pt-[80px]'>
         <div>
           <div className="h-[530px] w-[710px] border border-1 border-[#DEDFE1] rounded-[20px] ">
-            <div className="h-[78px] bg-[#A6A6A6] rounded-t-[20px]">
+            <div className="h-[78px] bg-black rounded-t-[20px]">
               <div className = 'flex justify-between py-[20px] px-[40px]'>
                 <div className = 'flex text-[22px] text-white'>
                   <p>Product</p>
@@ -36,7 +36,7 @@ export default function shoppingCart({}) {
           </div>
         </div>
         <div className='w-[500px] h-[440px]  '>
-            <div className="h-[78px] bg-[#A6A6A6] rounded-t-[20px] flex items-center pl-[25px]">
+            <div className="h-[78px] bg-black rounded-t-[20px] flex items-center pl-[25px]">
               <p className='text-white text-[20px]'>Cart Total</p>
             </div>
             <div className='h-[90px] border border-1 border-[#DEDFE1] pl-[25px] flex items-center w-full justify-between pr-[25px]'>
@@ -57,7 +57,7 @@ export default function shoppingCart({}) {
             </div>
         </div>
       </div>
-      <Footer />
+      <div className='mt-[20px]'><Footer /></div>
     </div>
   );
 }

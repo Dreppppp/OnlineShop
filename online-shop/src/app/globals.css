@@ -15,4 +15,32 @@
   }
 }
 
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/Benzin-ExtraBold.woff2') format('woff2');
+}
 
+*{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.drep{
+  font-family:  'MyFont';
+}
+/* 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif */
+
+.drepe{
+  animation: transferToMenu 1s infinite;
+}
+
+@keyframes transferToMenu {
+  0% {
+    transform: translateY(0);
+    font-size: 300px;
+    color: white;
+  }
+  100% {
+    transform: translateY(-10px);
+    font-size: 20px;
+    color: red;
+  }
+}

@@ -5,32 +5,34 @@ import Header from '@/components/Header';
 import FeaturedProducts from '@/components/FeaturedProducts';
 import Range from '@/components/Range';
 import UniqueProportions from '@/components/UniqueProportions';
-import Ongoings from '@/components/Ongoings';
 import Footer from '@/components/Footer';
 import ShoppingCardIcon from '@/components/ShoppingCardIcon';
 import useAnimaton from '@/hooks/useAnimaton';
 import useFetch, { RequestTypes } from '@/hooks/useFetch';
 import { IProduct } from '@/utils/interfaces';
+import LoaderGif from '@/components/LoaderGif';
+
+export interface IProductResponse {
+  products: IProduct[];
+  total: number;
+  skip: number;
+  limit: number;
+}
 
 
 export default function mainPage() {
-  let {isLoading, error, data} = useFetch<IProduct[]>('https://fakestoreapi.com/products', RequestTypes.GET )
+  let {isLoading, error, data} = useFetch<IProductResponse>('https://dummyjson.com/products/?limit=8', RequestTypes.GET )
+  console.log(data)
   const { shopingCard} = useShopingCatdStore();
   const { isDisappearAnimationAdded } = useAnimaton(1000, shopingCard);
-  if (isLoading) return <div>Loadnig...</div>
+  if (isLoading) return <div><LoaderGif/></div>
   if(error) return <div>Some went wrong...</div>
-  if (!data){ return (
-    <div>
-      No data
-    </div>
-  )} else{
     return(
       <div>
       <Header />
-      <FeaturedProducts data={data}/>
-      <Range />
+      <FeaturedProducts data={data?.products || []}/>
       <UniqueProportions />
-      <Ongoings />
+      <Range />
       <Footer />
       <ShoppingCardIcon
         className={shopingCard.length > 0 ? 'opacity-100' : ''}
@@ -39,4 +41,4 @@ export default function mainPage() {
     </div>
     )
   }
-}
+

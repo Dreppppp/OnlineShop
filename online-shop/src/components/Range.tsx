@@ -1,7 +1,7 @@
-import bedroomFurnitures from '../images/BedroomFurniture.jpg';
-import livingRoomFurnitures from '../images/LivingRoomFurniture.webp';
-import DiningRoomFurintures from '../images/DiningRoomFurniture.jpg';
-import sofaSets from '../images/SofaSets.jpg';
+import bedroomFurnitures from '../images/bedroomFurniture.png';
+import livingRoomFurnitures from '../images/livingRoom.png';
+import DiningRoomFurintures from '../images/diningRoom.png';
+import sofaSets from '../images/sofaSetsFurniture.png';
 
 export default function Range() {
   console.log(bedroomFurnitures);

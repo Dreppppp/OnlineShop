@@ -2,7 +2,7 @@ import { ArrowRightIcon } from '@/images/icons';
 
 export default function UniqueProportions() {
   return (
-    <div className="w-full h-[661px] bg-[#666666] mt-[170px] flex justify-between items-center px-[210px] text-white">
+    <div className="w-full h-[661px] bg-black mt-[170px] flex justify-between items-center px-[210px] text-white">
       <div  className='w-[456px]' >
         <h1 data-aos="fade-up"  className='text-[36px] mb-[30px] font-medium'>Have a Look at Our Unique Selling Proportions</h1>
         <button data-aos="fade-up" data-aos-delay={500} className="w-[181px] h-[59px] bg-[#282828] text-[white] rounded-[50px] flex justify-between items-center px-[22px]">

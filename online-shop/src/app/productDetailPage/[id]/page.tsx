@@ -7,11 +7,12 @@ import useFetch, { RequestTypes } from '@/hooks/useFetch';
 import { Product } from '@/components/Product';
 import { useShopingCatdStore } from '@/store/shoppingCardStore';
 import { IProduct } from '@/utils/interfaces';
+import { IProductResponse } from '@/app/homePage/page';
 
 export default  function productDetailPage({params}: {params: Promise<{ slug: string }>}) {
     const  {id}:any = params
     const {addToCard, onIncreaseItemCount, onReduceItemCount } = useShopingCatdStore();
-    let {isLoading, error, data} = useFetch<IProduct>(`https://fakestoreapi.com/products/${id}`, RequestTypes.GET)
+    let {isLoading, error, data} = useFetch<IProduct>(`https://dummyjson.com/products/${id}`, RequestTypes.GET)
     console.log(data)
     let [counter, setCounter] = useState<number>(0);
     const onSelectProduct = (product: IProduct) => {
@@ -27,7 +28,7 @@ export default  function productDetailPage({params}: {params: Promise<{ slug: st
   if(!data){return(
     <div>no data</div>
   )} else{
-    let {title, price, category, description, rating, id, image} = data
+    let {title, price, category, description, rating, id, images} = data
     return (
     <div>
       <div className="w-full px-[108px] pt-[40px] ">
@@ -41,7 +42,7 @@ export default  function productDetailPage({params}: {params: Promise<{ slug: st
             <div className="w-[141px] h-[191px] bg-[#A6A6A6]"></div>
           </div> */}
           <div className="w-[550px] h-[630px] ">
-            <img src={image} alt="photo" className="w-[550px] h-[630px] object-contain "/>
+            <img src={images?.[0]} alt="photo" className="w-[550px] h-[630px] object-contain "/>
           </div>
         </div>
         <div className="w-[700px] h-[615px]">
@@ -57,7 +58,7 @@ export default  function productDetailPage({params}: {params: Promise<{ slug: st
                   <StarIcon key={elem} />
                 ))}
               </div>
-              <p className="text-[20px] ml-[15px]">{rating?.count}  review</p>
+              <p className="text-[20px] ml-[15px]">{rating}  review</p>
             </div>
             <div>
               <p>{price}</p>

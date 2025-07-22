@@ -11,7 +11,7 @@ export default function productDetailPage() {
   return (
     <div>
       <div className="w-full px-[108px] pt-[40px] ">
-        <Menu textColor="black" />
+        <Menu showStickyLogo={true}/>
       </div>
       <div className="w-full h-[630px] flex justify-between px-[100px] mt-[60px]">
         <div className="w-[725px]  flex justify-between">

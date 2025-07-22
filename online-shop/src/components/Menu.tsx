@@ -8,47 +8,45 @@ import {
   ProfileMenuBlack,
   MenuArrowDownBlack,
   BagpackMenuBlack,
+  MenuIcon,
+  SearchIcon,
+  CartIcon,
 } from '@/images/icons';
+
 type MenuProps = {
-  textColor: string;
+  showStickyLogo: boolean;
 };
 
-export default function Menu({ textColor }: MenuProps) {
+export default function Menu({ showStickyLogo }: MenuProps) {
   return (
-    <div className="w-full h-[25px] flex justify-between" style={{ color: textColor }}>
-      <div data-aos="fade-right" data-aos-delay={100}>
-        {textColor === 'white' ? <LogoIcon /> : <LogoIconBlack />}
+    <div className="w-full h-[70px] flex items-center justify-between bg-black px-[100px] text-white fixed top-0 left-0 z-[1000]">
+      {/* Левая часть */}
+      <div className="flex items-center gap-4">
+        <LogoIcon />
       </div>
-      <div className="text-[16px] w-[373px] flex justify-between">
-        <Link href="/homePage">
-          <button data-aos="fade-right" data-aos-delay={400}>
-            Home
-          </button>
-        </Link>
-        <button data-aos="fade-right" data-aos-delay={600}>
-          Categories
-        </button>
-        <button data-aos="fade-left" data-aos-delay={700}>
-          Contact Us
-        </button>
-        <button data-aos="fade-left" data-aos-delay={500}>
-          Blog
-        </button>
+
+      {/* Центр — появляется логотип при showStickyLogo */}
+      <div className="absolute left-1/2 -translate-x-1/2">
+        {showStickyLogo && (
+          <p className="text-[20px] font-bold tracking-widest text-white drep">
+            DREPBUY
+          </p>
+        )}
       </div>
-      <div className="flex gap-5">
-        <div
-          data-aos="fade-left"
-          data-aos-delay={300}
-          className="flex items-center justify-center gap-1"
-        >
-          {textColor === 'white' ? <ProfileMenuIcon /> : <ProfileMenuBlack />}
-          {textColor === 'white' ? <MenuArrowDownIcon /> : <MenuArrowDownBlack />}
+
+      {/* Правая часть */}
+      <div className="flex gap-5 items-center">
+        <div className="size-[24px]">
+          <SearchIcon />
         </div>
-       <Link href="/shoppingCart">
-          <div data-aos="fade-left" data-aos-delay={200} className="flex justify-center items-center">
-            {textColor === 'white' ? <BagpackMenuIcon /> : <BagpackMenuBlack />}
+        <Link href="/shoppingCart">
+          <div className="flex justify-center items-center">
+            <BagpackMenuIcon />
           </div>
-       </Link>
+        </Link>
+        <div className="flex items-center justify-center gap-1">
+          <MenuIcon />
+        </div>
       </div>
     </div>
   );

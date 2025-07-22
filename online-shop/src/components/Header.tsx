@@ -1,86 +1,79 @@
-import { BagpackMenuIcon, LogoIcon, MenuArrowDownIcon, ProfileMenuIcon } from '@/images/icons';
+import {
+  ArrowDownIcon,
+  MenuArrowDownIcon,
+  ProfileMenuIcon,
+  SearchIcon,
+} from '@/images/icons';
 import Menu from './Menu';
+import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Header() {
+  const logoRef = useRef<HTMLParagraphElement | null>(null);
+  const [showMiniLogo, setShowMiniLogo] = useState(false);
 
-  interface User {
-    id: number;
-    name: string;
-  }
-  const greetUser = (user: User): string => {
-    return `hello ${user}`;
-  };
+  useEffect(() => {
+    if (!logoRef.current) return;
 
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: logoRef.current,
+        start: 'top top',
+        end: '+=200',
+        scrub: true,
+        onUpdate: (self) => {
+          if (self.progress > 0.99) setShowMiniLogo(true);
+          else setShowMiniLogo(false);
+        },
+      },
+    });
 
-  interface Product {
-    name: string;
-    price: number;
-  }
-  const getTotal = (products: Product[]): number => {
-    let sum = 0;
-    return products.reduce((sum, product) => sum + product.price, 0);
-  };
-  
-  type Status = 'success' | 'error' | 'loading';
+    tl.to(logoRef.current, {
+      position: 'fixed',
+      top: 10,
+      left: 100,
+      fontSize: '20px',
+      opacity: 0,
+      duration: 1.5,
+      ease: 'power2.out',
+    });
 
-  const logStatus = (status: Status): void => {
-    if (status === 'success') {
-      console.log('Operation was successful');
-    } else if (status === 'error') {
-      console.log(' error');
-    } else if (status === 'loading') {
-      console.log('Loading...');
-    }
-  };
-  interface Post {
-    title: string;
-    content: string;
-  }
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+  }, []);
 
-  const printPost = (post: Post): void => {
-    console.log(post.title);
-    if (post.content) {
-      console.log(post.content);
-    }
-  };
-  interface User {
-    name: string;
-    isActive: boolean;
-  }
-
-  const filterActive = (users: User[]): User[] => {
-    return users.filter((user) => user.isActive);
-  };
-
-  interface Animal {
-    name: string;
-  }
-  interface Dog extends Animal {
-    barkVolume: number
-  }
-  // let a:Dog = {name}
   return (
-    <div className="w-full h-[780px] px-[108px]  bg-[#000000] opacity-[60%] pt-[40px]"  >
-      <Menu  textColor="white"/>
-      <div className="w-[800px] h-[300px] text-center mx-auto mt-[160px]">
-        <h1 data-aos="fade-up-right" className="text-[45px] text-white" data-aos-delay={850}>
-          Crafting Comfort, Redefining Spaces. Your Home, Your Signature Style!
-        </h1>
-        <p
-          data-aos-delay={1000}
-          data-aos="fade-up-left"
-          className="w-[650px] text-[16px] text-white mx-[auto] my-[35px]"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla nunc in molestie
-          feugiat. Nunc auctor consectetur elit, quis pulvina. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Nulla fringilla nunc in molestie feugiat
-        </p>
-        <input
-          data-aos-delay={1150}
-          data-aos="fade-up-right"
-          type="search"
-          className="text-white w-[344] h-[56] rounded-[20px] border border-1 border-white bg-[#oC7075]"
-        />
+    <div className="w-full h-[810px] bg-black pt-[40px] relative overflow-hidden">
+      {/* Меню с маленьким логотипом */}
+      <div className="fixed top-0 left-0 w-full z-50">
+        <Menu showStickyLogo={showMiniLogo} />
+      </div>
+
+      {/* Большой логотип, который анимируется */}
+      <p
+        ref={logoRef}
+        className="text-white [letter-spacing:0.1em] drep"
+        style={{
+          fontWeight: 'bold',
+          whiteSpace: 'nowrap',
+          fontSize: '300px',
+          position: 'absolute',
+          left: '100px',
+          top: '100px',
+        }}
+      >
+        DREPE
+      </p>
+
+      <div className="w-full flex justify-center items-center mt-[350px]">
+        <button className="text-[18px] w-[200px] h-[57px] bg-white rounded-[5px] flex justify-between items-center px-[22px]">
+          <p className="text-black font-medium">Start shopping </p>
+          <ArrowDownIcon />
+        </button>
       </div>
     </div>
   );

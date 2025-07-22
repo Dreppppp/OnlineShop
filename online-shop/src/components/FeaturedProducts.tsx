@@ -1,37 +1,8 @@
 import { useShopingCatdStore } from '@/store/shoppingCardStore';
 import ProductList, { Product } from './Product';
 import { ICardProduct, IProduct } from '@/utils/interfaces';
-export default function FeaturedProducts({data}:{data:unknown[]}) {
-  // const featuredProducts: Product[] = [
-  //   {
-  //     id: 1,
-  //     title: 'Кружка',
-  //     price: 15,
-  //     image: null,
-  //       count:1,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Футболка',
-  //     price: 25,
-  //     image: null,
-  //       count:1,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'Штаны',
-  //     price: 30,
-  //     image: null,
-  //       count:1,
-  //   },
-  //   {
-  //     id: 4,
-  //     title: 'Шорты',
-  //     price: 20,
-  //     image: null,
-  //       count:1,
-  //   },
-  // ];
+import { ArrowRightIcon } from '@/images/icons';
+export default function FeaturedProducts({ data }: { data: unknown[] }) {
   const { addToCard, onReduceItemCount } = useShopingCatdStore();
   const onSelectProduct = (product: ICardProduct) => {
     addToCard(product);
@@ -49,15 +20,15 @@ export default function FeaturedProducts({data}:{data:unknown[]}) {
         <h1 data-aos="fade-up" className="text-[36px] font-medium ">
           Featured Products
         </h1>
-        <p data-aos="fade-up" className="text-[#666666] text-[16px] w-[507px] text-center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla nunc in molestie
-          feugiat. Nunc auctor consectetur elit, quis pulvina.
-        </p>
+        <button data-aos="fade-up" data-aos-delay={500} className="w-[181px] h-[59px] bg-[#282828] text-[white] rounded-[50px] flex justify-between items-center px-[22px]">
+          <p>All products</p> 
+          <ArrowRightIcon/>
+        </button>
       </div>
       <ProductList
         products={data as ICardProduct[]}
         setChooseProducts={onSelectProduct}
-        onRemoveProduct={onRemoveProduct}
+        page="featured"
       />
     </div>
   );
