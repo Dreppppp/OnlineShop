@@ -21,11 +21,11 @@ function shoppingCart(_a) {
     var totalPrice = shopingCard.reduce(function (acc, next) { return acc += next.count * next.price; }, 0);
     return (React.createElement("div", { className: 'w-full' },
         React.createElement("div", { className: "w-full px-[108px] pt-[40px] " },
-            React.createElement(Menu_1["default"], { textColor: "black" })),
+            React.createElement(Menu_1["default"], { showStickyLogo: true })),
         React.createElement("div", { className: 'w-screen flex justify-between px-[200px] pt-[80px]' },
             React.createElement("div", null,
                 React.createElement("div", { className: "h-[530px] w-[710px] border border-1 border-[#DEDFE1] rounded-[20px] " },
-                    React.createElement("div", { className: "h-[78px] bg-[#A6A6A6] rounded-t-[20px]" },
+                    React.createElement("div", { className: "h-[78px] bg-black rounded-t-[20px]" },
                         React.createElement("div", { className: 'flex justify-between py-[20px] px-[40px]' },
                             React.createElement("div", { className: 'flex text-[22px] text-white' },
                                 React.createElement("p", null, "Product")),
@@ -35,7 +35,7 @@ function shoppingCart(_a) {
                                 React.createElement("p", null, "Total")))),
                     shopingCard.map(function (product) { return (React.createElement(ShoppingCardItem_1["default"], __assign({ key: product.id }, product))); }))),
             React.createElement("div", { className: 'w-[500px] h-[440px]  ' },
-                React.createElement("div", { className: "h-[78px] bg-[#A6A6A6] rounded-t-[20px] flex items-center pl-[25px]" },
+                React.createElement("div", { className: "h-[78px] bg-black rounded-t-[20px] flex items-center pl-[25px]" },
                     React.createElement("p", { className: 'text-white text-[20px]' }, "Cart Total")),
                 React.createElement("div", { className: 'h-[90px] border border-1 border-[#DEDFE1] pl-[25px] flex items-center w-full justify-between pr-[25px]' },
                     React.createElement("p", { className: 'text-black text-[20px]' }, "SUBTOTAL"),
@@ -50,7 +50,8 @@ function shoppingCart(_a) {
                         "$")),
                 React.createElement("div", { className: 'h-[71px] bg-[#000000] rounded-b-[20px] flex items-center justify-center ' },
                     React.createElement("p", { className: 'text-white text-[16px] ' }, "Proceed To Checkout")))),
-        React.createElement(Footer_1["default"], null)));
+        React.createElement("div", { className: 'mt-[20px]' },
+            React.createElement(Footer_1["default"], null))));
 }
 exports["default"] = shoppingCart;
 {

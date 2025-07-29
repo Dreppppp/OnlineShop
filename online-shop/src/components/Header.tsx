@@ -1,80 +1,57 @@
-import {
-  ArrowDownIcon,
-  MenuArrowDownIcon,
-  ProfileMenuIcon,
-  SearchIcon,
-} from '@/images/icons';
-import Menu from './Menu';
-import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+'use client';
 
-gsap.registerPlugin(ScrollTrigger);
+import { useEffect, useState } from 'react';
+import { ArrowDownIcon, SearchIcon } from '@/images/icons';
+import Menu from './Menu';
+import FieldWithHint from './FieldWithHint';
 
 export default function Header() {
-  const logoRef = useRef<HTMLParagraphElement | null>(null);
-  const [showMiniLogo, setShowMiniLogo] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  
 
   useEffect(() => {
-    if (!logoRef.current) return;
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: logoRef.current,
-        start: 'top top',
-        end: '+=200',
-        scrub: true,
-        onUpdate: (self) => {
-          if (self.progress > 0.99) setShowMiniLogo(true);
-          else setShowMiniLogo(false);
-        },
-      },
-    });
-
-    tl.to(logoRef.current, {
-      position: 'fixed',
-      top: 10,
-      left: 100,
-      fontSize: '20px',
-      opacity: 0,
-      duration: 1.5,
-      ease: 'power2.out',
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+    const onScroll = () => {
+      setScrollY(window.scrollY);
     };
+
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+ 
+  const clampedScroll = Math.min(scrollY, 300);
+  const scale = 1 - clampedScroll / 600; 
+  const opacity = 1 - clampedScroll / 300;
+  const translateY = 24 - clampedScroll / 10; 
+  const showStickyLogo = scrollY > 50;
+
   return (
-    <div className="w-full h-[810px] bg-black pt-[40px] relative overflow-hidden">
+    <div className="w-full h-[810px] bg-black pt-[40px] overflow-visible relative">
       {/* Меню с маленьким логотипом */}
       <div className="fixed top-0 left-0 w-full z-50">
-        <Menu showStickyLogo={showMiniLogo} />
+        <Menu showStickyLogo={showStickyLogo} />
       </div>
 
-      {/* Большой логотип, который анимируется */}
+      {/* Большой логотип DREPE */}
       <p
-        ref={logoRef}
-        className="text-white [letter-spacing:0.1em] drep"
+        className="drep text-white text-[330px] text-center sticky top-[80px] z-40 pointer-events-none"
         style={{
-          fontWeight: 'bold',
-          whiteSpace: 'nowrap',
-          fontSize: '300px',
-          position: 'absolute',
-          left: '100px',
-          top: '100px',
+          transform: `scale(${scale}) translateY(${translateY}px)`,
+          opacity,
+          transition: 'transform 0.6s ease, opacity 0.6s ease',
         }}
       >
         DREPE
       </p>
-
-      <div className="w-full flex justify-center items-center mt-[350px]">
+  {/* <div className='bg-[white] mt-[200px] flex items-center justify-center size-[500px]'><FieldWithHint/></div> */}
+      {/* Кнопка */}
+      <div className="w-full flex justify-center items-center mt-[100px]">
         <button className="text-[18px] w-[200px] h-[57px] bg-white rounded-[5px] flex justify-between items-center px-[22px]">
-          <p className="text-black font-medium">Start shopping </p>
+          <p className="text-black font-medium">Start shopping</p>
           <ArrowDownIcon />
         </button>
       </div>
+      
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default function shoppingCart({}) {
   return (
     <div className='w-full'>
       <div className="w-full px-[108px] pt-[40px] ">
-        <Menu textColor="black" />
+        <Menu showStickyLogo={true}/>
       </div>
       <div className='w-screen flex justify-between px-[200px] pt-[80px]'>
         <div>
@@ -28,7 +28,7 @@ export default function shoppingCart({}) {
                   <p>Quantity</p>
                   <p>Total</p>
                 </div>
-              </div>
+              </div> 
             </div>
             {shopingCard.map((product) => (
               <ShoppingCardItem key={product.id} {...product} />

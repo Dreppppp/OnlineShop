@@ -1,7 +1,7 @@
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
-import next from 'eslint-config-next'
+import eslintRecommended from '@eslint/js';
+import prettierRecommended from 'eslint-plugin-prettier/recommended';
 
 export default [
-  ...next,
-  ...eslintPluginPrettierRecommended,
-]
+  eslintRecommended.configs.recommended,
+  prettierRecommended,
+];

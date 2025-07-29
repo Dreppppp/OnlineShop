@@ -6,7 +6,6 @@ var Header_1 = require("@/components/Header");
 var FeaturedProducts_1 = require("@/components/FeaturedProducts");
 var Range_1 = require("@/components/Range");
 var UniqueProportions_1 = require("@/components/UniqueProportions");
-var Ongoings_1 = require("@/components/Ongoings");
 var Footer_1 = require("@/components/Footer");
 var ShoppingCardIcon_1 = require("@/components/ShoppingCardIcon");
 var useAnimaton_1 = require("@/hooks/useAnimaton");

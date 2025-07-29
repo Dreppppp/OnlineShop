@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.FavoriteIcon = exports.BagpackMenuBlack = exports.MenuArrowDownBlack = exports.ProfileMenuBlack = exports.LogoIconBlack = exports.BigLogoIcon = exports.ArrowRightIcon = exports.BagpackMenuIcon = exports.ProfileMenuIcon = exports.MenuArrowDownIcon = exports.ShoppingCart = exports.LogoIcon = void 0;
+exports.CrossIcon = exports.CartIcon = exports.MenuIcon = exports.ArrowDownIcon = exports.SearchIcon = exports.StarIcon = exports.FavoriteIcon = exports.BagpackMenuBlack = exports.MenuArrowDownBlack = exports.ProfileMenuBlack = exports.LogoIconBlack = exports.BigLogoIcon = exports.ArrowRightIcon = exports.BagpackMenuIcon = exports.ProfileMenuIcon = exports.MenuArrowDownIcon = exports.ShoppingCart = exports.LogoIcon = void 0;
 exports.LogoIcon = function () {
     return (React.createElement("svg", { width: "55", height: "21", viewBox: "0 0 55 21", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
         React.createElement("g", { clipPath: "url(#clip0_2_24927)" },
@@ -56,7 +56,7 @@ exports.ProfileMenuBlack = function () {
 };
 exports.MenuArrowDownBlack = function () {
     return (React.createElement("svg", { width: "10", height: "6", viewBox: "0 0 10 6", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-        React.createElement("path", { d: "M0.59961 1L4.59961 5L8.59961 1", stroke: "black", "stroke-linecap": "round", "stroke-linejoin": "round" })));
+        React.createElement("path", { d: "M0.59961 1L4.59961 5L8.59961 1", stroke: "black", strokeLinecap: "round", strokeLinejoin: "round" })));
 };
 exports.BagpackMenuBlack = function () {
     return (React.createElement("svg", { width: "19", height: "20", viewBox: "0 0 19 20", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
@@ -66,34 +66,36 @@ exports.FavoriteIcon = function () {
     return (React.createElement("svg", { width: "26", height: "23", viewBox: "0 0 26 23", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
         React.createElement("path", { d: "M3.42634 11.6588L13.3672 21.5996L23.308 11.6588C25.8036 9.16325 25.8036 5.11719 23.308 2.62165C20.8125 0.126116 16.7664 0.126116 14.2709 2.62165L13.3672 3.52537L12.4635 2.62165C9.96794 0.126116 5.92188 0.126116 3.42634 2.62165C0.930804 5.11719 0.930803 9.16325 3.42634 11.6588Z", stroke: "#AEAEAE", "stroke-width": "1.3125", "stroke-linejoin": "round" })));
 };
-// export const Icon = () => {
-//     return(
-//     )
-// }
-// export const Icon = () => {
-//     return(
-//     )
-// }
-// export const Icon = () => {
-//     return(
-//     )
-// }
-// export const Icon = () => {
-//     return(
-//     )
-// }
-// export const Icon = () => {
-//     return(
-//     )
-// }
-// export const Icon = () => {
-//     return(
-//     )
-// }
-// export const Icon = () => {
-//     return(
-//     )
-// }
+exports.StarIcon = function () {
+    return (React.createElement("svg", { width: "15", height: "13", viewBox: "0 0 15 13", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+        React.createElement("path", { d: "M7.95196 0.459426C7.69342 0.0138512 7.04996 0.0138494 6.79141 0.459426L4.97057 3.5974C4.84285 3.81751 4.62209 3.96772 4.37046 4.00572L0.958086 4.52112C0.384953 4.60769 0.183913 5.33132 0.630262 5.70111L3.17234 7.8072C3.40765 8.00215 3.51829 8.30967 3.46113 8.60985L2.79616 12.1019C2.69105 12.654 3.27056 13.0829 3.76779 12.8211L6.98097 11.1292C7.22553 11.0004 7.51784 11.0004 7.7624 11.1292L10.9756 12.8211C11.4728 13.0829 12.0523 12.654 11.9472 12.1019L11.2822 8.60985C11.2251 8.30967 11.3357 8.00215 11.571 7.8072L14.1131 5.70111C14.5595 5.33132 14.3584 4.60769 13.7853 4.52112L10.3729 4.00572C10.1213 3.96772 9.90053 3.81751 9.77281 3.5974L7.95196 0.459426Z", fill: "#A6A6A6" })));
+};
+exports.SearchIcon = function () {
+    return (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "white", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round", className: "feather feather-search" },
+        React.createElement("circle", { cx: "11", cy: "11", r: "8" }),
+        React.createElement("line", { x1: "21", y1: "21", x2: "16.65", y2: "16.65" })));
+};
+exports.ArrowDownIcon = function () {
+    return (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "black", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round", className: "feather feather-chevron-down" },
+        React.createElement("polyline", { points: "6 9 12 15 18 9" })));
+};
+exports.MenuIcon = function () {
+    return (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "white", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round", className: "feather feather-menu" },
+        React.createElement("line", { x1: "3", y1: "12", x2: "21", y2: "12" }),
+        React.createElement("line", { x1: "3", y1: "6", x2: "21", y2: "6" }),
+        React.createElement("line", { x1: "3", y1: "18", x2: "21", y2: "18" })));
+};
+exports.CartIcon = function () {
+    return (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", viewBox: "0 0 24 24", fill: "none", stroke: "white", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round", className: "feather feather-shopping-cart" },
+        React.createElement("circle", { cx: "9", cy: "21", r: "1" }),
+        React.createElement("circle", { cx: "20", cy: "21", r: "1" }),
+        React.createElement("path", { d: "M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" })));
+};
+exports.CrossIcon = function () {
+    return (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "white", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round", className: "feather feather-x" },
+        React.createElement("line", { x1: "18", y1: "6", x2: "6", y2: "18" }),
+        React.createElement("line", { x1: "6", y1: "6", x2: "18", y2: "18" })));
+};
 // export const Icon = () => {
 //     return(
 //     )
