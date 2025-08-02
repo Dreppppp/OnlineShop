@@ -41,14 +41,14 @@ function page() {
                                 } }),
                             React.createElement("p", { className: "pl-[10px]" }, name)));
                     })),
-            React.createElement("div", { className: "w-[1240] pl-[5 0px]" },
+            React.createElement("div", { className: "w-[1240]" },
                 React.createElement("div", { className: "w-[930px] pl-[250px]" },
                     React.createElement("h1", { className: "text-[black] text-[36px] mb-[25px]" }, "Our Collection Of Products"),
                     React.createElement("div", { className: "w-[930px] h-[56px] rounded-[30px] border border-1 border-[#E2E2E2] flex justify-between items-center pl-[15px] pr-[10px]" },
                         React.createElement("input", { type: "text", placeholder: "Search An Item", className: "w-[850px] text-[20px] border-none outline-none" }),
                         React.createElement("div", { className: "h-[40px] w-[40px] bg-black rounded-full flex items-center justify-center" },
                             React.createElement(icons_1.SearchIcon, null)))),
-                React.createElement("div", { className: "" },
+                React.createElement("div", { className: "w-[1240px]" },
                     React.createElement(Product_1["default"], { products: ((_a = products === null || products === void 0 ? void 0 : products.products) !== null && _a !== void 0 ? _a : []), setChooseProducts: onSelectProduct, page: "featured" }))))));
 }
 exports["default"] = page;

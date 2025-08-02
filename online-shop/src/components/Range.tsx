@@ -18,8 +18,7 @@ export default function Range() {
       </div>
       <div className="w-[1240px] flex justify-between mx-auto mt-[68px]">
         <div
-          data-aos="fade-right"
-          data-aos-delay={250}
+
           className="w-[392] h-[513px] rounded-[20px] relative"
         >
           <img

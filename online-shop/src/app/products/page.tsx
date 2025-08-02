@@ -7,7 +7,6 @@ import useFewFetch from '@/hooks/useFewFetch';
 import { SearchIcon } from '@/images/icons';
 import { useState } from 'react';
 import { IProductResponse } from '../homePage/page';
-import { Checkbox } from '@heroui/checkbox';
 import ProductList from '@/components/Product';
 import { ICardProduct } from '@/utils/interfaces';
 import { useShopingCatdStore } from '@/store/shoppingCardStore';
@@ -70,7 +69,7 @@ export default function page() {
               </div>
             ))}
         </div>
-        <div className="w-[1240] pl-[5 0px]">
+        <div className="w-[1240]">
           <div className="w-[930px] pl-[250px]">
             <h1 className="text-[black] text-[36px] mb-[25px]">Our Collection Of Products</h1>
             <div className="w-[930px] h-[56px] rounded-[30px] border border-1 border-[#E2E2E2] flex justify-between items-center pl-[15px] pr-[10px]">
@@ -84,7 +83,7 @@ export default function page() {
               </div>
             </div>
           </div>
-          <div className="">
+          <div className="w-[1240px]">
             <ProductList
               products={(products?.products ?? []) as ICardProduct[]}
               setChooseProducts={onSelectProduct}

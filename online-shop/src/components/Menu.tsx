@@ -67,19 +67,7 @@ export default function Menu({ showStickyLogo }: MenuProps) {
             ${isSearch ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none translate-y-6'}
           `}
         >
-          <div className="flex items-center justify-between w-full border border-white rounded-[70px] h-[50px] px-[20px]">
-            <div onClick={() => setIsSearch(false)} className="cursor-pointer">
-              <CrossIcon />
-            </div>
-            <input
-              type="text"
-              placeholder="Search for..."
-              className="w-full outline-none bg-transparent text-white px-4"
-              autoFocus={isSearch}
-            />
-            <FieldWithHint/>
-            <SearchIcon />
-          </div>
+            <FieldWithHint isSearch={isSearch} setIsSearch={setIsSearch}/>
         </div>
       </div>
       {isOpen && (

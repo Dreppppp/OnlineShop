@@ -34,10 +34,6 @@ export default function mainPage() {
       <UniqueProportions />
       <Range />
       <Footer />
-      <ShoppingCardIcon
-        className={shopingCard.length > 0 ? 'opacity-100' : ''}
-        disappearAnimation={isDisappearAnimationAdded ? 'animate-smooth-disappear' : ''}
-      />
     </div>
     )
   }
