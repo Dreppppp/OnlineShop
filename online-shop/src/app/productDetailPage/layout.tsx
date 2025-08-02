@@ -1,6 +1,6 @@
 import AOSProvider from "@/providers/AOSProvider";
 
-export default function productDetailPage({
+export default function productDetailLayout({
     children,
   }: Readonly<{
     children: React.ReactNode;
