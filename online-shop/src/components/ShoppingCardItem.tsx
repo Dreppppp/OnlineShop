@@ -1,8 +1,8 @@
-import { Product } from '@/components/Product';
 import { useShopingCatdStore } from '@/store/shoppingCardStore';
+import { ICardProduct } from '@/utils/interfaces';
 import { FC } from 'react';
 
-const ShoppingCardItem: FC<Product> = ({ title, price, id, count, images}) => {
+const ShoppingCardItem: FC<ICardProduct> = ({ title, price, id, count, images}) => {
   const { onIncreaseItemCount, onReduceItemCount, removeFromCard } = useShopingCatdStore();
   const onRemoveFromCard = (id: number) => {
     removeFromCard(id)

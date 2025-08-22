@@ -1,4 +1,3 @@
-import { Product } from '@/components/Product';
 import { ICardProduct } from '@/utils/interfaces';
 import { create } from 'zustand';
 

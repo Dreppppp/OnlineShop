@@ -1,8 +1,8 @@
 import { useShopingCatdStore } from '@/store/shoppingCardStore';
-import ProductList, { Product } from './Product';
 import { ICardProduct, IProduct } from '@/utils/interfaces';
 import { ArrowRightIcon } from '@/images/icons';
 import Link from 'next/link';
+import ProductList from './Product';
 export default function FeaturedProducts({ data }: { data: unknown[] }) {
   const { addToCard, onReduceItemCount } = useShopingCatdStore();
   const onSelectProduct = (product: ICardProduct) => {
