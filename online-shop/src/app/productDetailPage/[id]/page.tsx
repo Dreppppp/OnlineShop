@@ -1,5 +1,3 @@
-// app/productDetailPage/[id]/page.tsx
-
 import ProductDetailClient from './ProductDetailClient';
 
 export async function generateStaticParams() {
@@ -10,10 +8,10 @@ export async function generateStaticParams() {
   return productIds.map(id => ({ id }));
 }
 
-type PageProps = {
-  params: Awaited<{ id: string }>;
-};
-
-export default function ProductDetailPage({ params }: PageProps) {
+export default function ProductDetailPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   return <ProductDetailClient id={params.id} />;
 }

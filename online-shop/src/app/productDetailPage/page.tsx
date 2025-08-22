@@ -6,7 +6,7 @@ import { FavoriteIcon, StarIcon } from '@/images/icons';
 
 
 
-export default function productDetailPage() {
+export default function ProductDetailPage() {
   let [counter, setCounter] = useState<number>(0);
   return (
     <div>
