@@ -1,46 +1,45 @@
+'use client';
+
 import * as React from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import { IProductResponse } from '@/app/homePage/page';
+import {IProduct } from '@/utils/interfaces';
 import useFetch, { RequestTypes } from '@/hooks/useFetch';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { IProduct } from '@/utils/interfaces';
 import { CrossIcon, SearchIcon } from '@/images/icons';
-import Paper from '@mui/material/Paper';
+import { useProductStore } from '@/store/productStore'; // Zustand
+import { IProductResponse } from '@/app/homePage/page';
 
 export default function FieldWithHint({ isSearch, setIsSearch }: { isSearch: boolean; setIsSearch: (val: boolean) => void }) {
   const router = useRouter();
+  const setCurrentId = useProductStore(state => state.setCurrentId);
 
   const { data: productArray } = useFetch<IProductResponse>(
     'https://dummyjson.com/products',
     RequestTypes.GET
   );
 
-  const [products, setProducts] = useState<any>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
   const [value, setValue] = useState<IProduct | null>(null);
   const [inputValue, setInputValue] = useState('');
-  
+
+  // Блокировка скролла при открытии поиска
   useEffect(() => {
-  if (isSearch) {
-    document.body.classList.add('overflow-hidden');
-  } else {
-    document.body.classList.remove('overflow-hidden');
-  } 
-  return () => {
-    document.body.classList.remove('overflow-hidden');
-  };
-}, [isSearch]);
+    if (isSearch) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [isSearch]);
 
-
+  // Подготовка списка продуктов
   useEffect(() => {
     if (productArray) {
-      setProducts(
-        productArray.products.map((item) => ({
-          ...item,
-          label: item.title,
-        }))
-      );
+      setProducts(productArray.products.map(item => ({ ...item, label: item.title })));
     }
   }, [productArray]);
 
@@ -58,12 +57,11 @@ export default function FieldWithHint({ isSearch, setIsSearch }: { isSearch: boo
         onChange={(_, newValue) => {
           setValue(newValue as IProduct);
           if (newValue) {
-            router.push(`/productDetailPage/${(newValue as IProduct).id}`);
+            setCurrentId((newValue as IProduct).id.toString());
+            router.push('/productDetailPage'); // единая страница деталей
           }
         }}
-        onInputChange={(_, newInputValue) => {
-          setInputValue(newInputValue);
-        }}
+        onInputChange={(_, newInputValue) => setInputValue(newInputValue)}
         sx={{ flexGrow: 1 }}
         componentsProps={{
           paper: {
@@ -92,13 +90,8 @@ export default function FieldWithHint({ isSearch, setIsSearch }: { isSearch: boo
               disableUnderline: true,
               sx: {
                 color: 'white',
-                '&::placeholder': {
-                  color: 'white',
-                  opacity: 1,
-                },
-                '& input': {
-                  color: 'white',
-                },
+                '&::placeholder': { color: 'white', opacity: 1 },
+                '& input': { color: 'white' },
               },
               className: 'bg-transparent px-2',
             }}
