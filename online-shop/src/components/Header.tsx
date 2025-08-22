@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowDownIcon, SearchIcon } from '@/images/icons';
 import Menu from './Menu';
-import FieldWithHint from './FieldWithHint';
 
 export default function Header() {
   const [scrollY, setScrollY] = useState(0);

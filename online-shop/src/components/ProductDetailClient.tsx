@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Menu from '@/components/Menu';
 import { FavoriteIcon, StarIcon } from '@/images/icons';
 import { IProduct } from '@/utils/interfaces';
 import { useShopingCatdStore } from '@/store/shoppingCardStore';

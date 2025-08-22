@@ -6,7 +6,6 @@ import FeaturedProducts from '@/components/FeaturedProducts';
 import Range from '@/components/Range';
 import UniqueProportions from '@/components/UniqueProportions';
 import Footer from '@/components/Footer';
-import ShoppingCardIcon from '@/components/ShoppingCardIcon';
 import useAnimaton from '@/hooks/useAnimaton';
 import useFetch, { RequestTypes } from '@/hooks/useFetch';
 import { IProduct } from '@/utils/interfaces';

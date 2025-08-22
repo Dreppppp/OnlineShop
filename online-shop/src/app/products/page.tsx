@@ -1,9 +1,7 @@
 'use client';
 
-import Loader from '@/components/Loader';
 import Menu from '@/components/Menu';
 import useFetch, { RequestTypes } from '@/hooks/useFetch';
-import useFewFetch from '@/hooks/useFewFetch';
 import { SearchIcon } from '@/images/icons';
 import { useState } from 'react';
 import { IProductResponse } from '../homePage/page';

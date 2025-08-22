@@ -1,5 +1,8 @@
 'use client';
 
+import { redirect } from 'next/navigation';
+
 export default function Home() {
-  return <div>hello next</div>;
+  redirect('/homePage');
+  return null
 }
