@@ -101,6 +101,7 @@ export default function ProductDetailClient({ id }: ProductDetailClientProps) {
               <p className="text-white text-[18px] ">Add to Cart</p>
             </button>
           </div>
+          
           <Link href="/checkoutPage">
             <button className="border border-black rounded-[30px] h-[50px] w-[700px] text-[20px] mt-[20px]  transition-transform duration-300 ease-in-out transform hover:scale-101 cursor-pointer">
               Buy Now
