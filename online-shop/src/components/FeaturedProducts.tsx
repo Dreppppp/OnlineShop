@@ -22,10 +22,12 @@ export default function FeaturedProducts({ data }: { data: unknown[] }) {
           Featured Products
         </h1>
         <Link href="/products">
-        <button data-aos="fade-up" data-aos-delay={500} className="w-[181px] h-[59px] bg-[#282828] text-[white] rounded-[50px] flex justify-between items-center px-[22px]">
-          <p>All products</p> 
-          <ArrowRightIcon/>
-        </button>
+        <div className='transition-transform duration-300 ease-in-out transform hover:scale-105'>
+          <button data-aos="fade-up" data-aos-delay={500} className="cursor-pointer w-[181px] h-[59px] bg-[#282828] text-[white] rounded-[50px] flex justify-between items-center px-[22px]">
+            <p>All products</p> 
+            <ArrowRightIcon/>
+          </button>
+        </div>
         </Link>
       </div>
       <ProductList

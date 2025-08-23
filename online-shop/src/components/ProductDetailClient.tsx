@@ -4,21 +4,23 @@ import { useEffect, useState } from 'react';
 import { FavoriteIcon, StarIcon } from '@/images/icons';
 import { IProduct } from '@/utils/interfaces';
 import { useShopingCatdStore } from '@/store/shoppingCardStore';
-
+import { useCartStore } from '@/store/cartStore';
+import Link from 'next/link';
 interface ProductDetailClientProps {
   id: string;
 }
 
 export default function ProductDetailClient({ id }: ProductDetailClientProps) {
+  const triggerShake = useCartStore((state) => state.triggerShake);
   const { addToCard, onIncreaseItemCount, onReduceItemCount } = useShopingCatdStore();
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
   const [data, setData] = useState<IProduct | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${id}`)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(setData)
       .catch(() => setError('Something went wrong'))
       .finally(() => setIsLoading(false));
@@ -37,6 +39,10 @@ export default function ProductDetailClient({ id }: ProductDetailClientProps) {
     });
   };
 
+  const addToCartHandler = () => {
+    triggerShake();
+    onSelectProduct();
+  };
   return (
     <div>
       <div className="w-full h-[630px] flex justify-between items-center px-[100px] mt-[60px]">
@@ -50,7 +56,9 @@ export default function ProductDetailClient({ id }: ProductDetailClientProps) {
           <h1 className="text-[32px] font-medium">{title}</h1>
           <div className="flex items-center mt-[15px]">
             <div className="gap-[2px] flex">
-              {[1, 2, 3, 4, 5].map(n => <StarIcon key={n} />)}
+              {[1, 2, 3, 4, 5].map((n) => (
+                <StarIcon key={n} />
+              ))}
             </div>
             <p className="text-[20px] ml-[15px]">{rating} review</p>
           </div>
@@ -63,19 +71,41 @@ export default function ProductDetailClient({ id }: ProductDetailClientProps) {
 
           <div className="flex justify-between mt-[40px]">
             <div className="w-[200px] h-[50px] rounded-[30px] border border-[#D7D7D7] flex justify-between items-center px-[20px]">
-              <button onClick={() => { onReduceItemCount(+id); setCounter(prev => Math.max(prev - 1, 0)); }}>-</button>
+              <button
+                className="cursor-pointer"
+                onClick={() => {
+                  onReduceItemCount(+id);
+                  setCounter((prev) => Math.max(prev - 1, 1));
+                }}
+              >
+                -
+              </button>
               <p className="text-[20px]">{counter}</p>
-              <button onClick={() => { onIncreaseItemCount(+id); setCounter(prev => prev + 1); }}>+</button>
+              <button
+                className="cursor-pointer"
+                onClick={() => {
+                  onIncreaseItemCount(+id);
+                  setCounter((prev) => prev + 1);
+                }}
+              >
+                +
+              </button>
             </div>
 
-            <button className="w-[430px] h-[50px] bg-[#282828] rounded-[30px]" onClick={onSelectProduct}>
-              <p className="text-white text-[18px]">Add to Cart</p>
+            <button
+              onClick={() => {
+                addToCartHandler();
+              }}
+              className="w-[430px] h-[50px] bg-[#282828] rounded-[30px]  transition-transform duration-300 ease-in-out transform hover:scale-102 cursor-pointer"
+            >
+              <p className="text-white text-[18px] ">Add to Cart</p>
             </button>
           </div>
-
-          <button className="border border-black rounded-[30px] h-[50px] w-[700px] text-[20px] mt-[20px]">
-            Buy Now
-          </button>
+          <Link href="/contactUs">
+            <button className="border border-black rounded-[30px] h-[50px] w-[700px] text-[20px] mt-[20px]  transition-transform duration-300 ease-in-out transform hover:scale-101 cursor-pointer">
+              Buy Now
+            </button>
+          </Link>
         </div>
       </div>
     </div>
