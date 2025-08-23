@@ -1,8 +1,8 @@
 'use client';
-
-import { redirect } from 'next/navigation';
-
 export default function Home() {
-  redirect('/homePage');
-  return null
+  return (
+    <main>
+      <h1>Hello, OnlineShop!</h1>
+    </main>
+  );
 }
